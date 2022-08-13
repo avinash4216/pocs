@@ -11,6 +11,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -76,6 +77,9 @@ public class DownloadZipFileAndRead {
         readZipFile(zipFileDownloadFilePath, rows);
         log.info("number of rows: {}", rows.size());
 
+        // print rows
+        printRows(rows);
+
         // delete temp directory
         deleteTempDirectory(tempDirectoryFile);
     }
@@ -93,7 +97,7 @@ public class DownloadZipFileAndRead {
                     String line = null;
                     while((line = bufferedReader.readLine()) != null){
                         log.info("line: {}", line);
-                        rows.add(line.split("|"));
+                        rows.add(line.split("\\|"));
                         // FIXME - remove this code before check-in - added for local testing to limit the no.of rows read from file
                         i++;
                         if(i == MAX_NO_OF_RECORDS)
@@ -128,6 +132,13 @@ public class DownloadZipFileAndRead {
         log.info("downloading file, url: {}, zip-file: {}", url.toString(), zipFileDownloadFilePath);
         FileUtils.copyURLToFile(url, new File(zipFileDownloadFilePath));
         log.info("file downloaded, url: {}, zip-file: {}", url.toString(), zipFileDownloadFilePath);
+    }
+
+    private void printRows(List<String[]> rows){
+        rows.forEach(row -> {
+            String rowString = Arrays.deepToString(row);
+            System.out.println(rowString);
+        });
     }
 
     private String downloadFileV1() throws IOException {
