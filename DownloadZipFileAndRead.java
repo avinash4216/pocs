@@ -16,6 +16,33 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+/**
+ * <dependency>
+ *             <groupId>commons-io</groupId>
+ *             <artifactId>commons-io</artifactId>
+ *             <version>2.11.0</version>
+ *         </dependency>
+ *
+ * <dependency>
+ *             <groupId>org.slf4j</groupId>
+ *             <artifactId>slf4j-api</artifactId>
+ *             <version>1.7.5</version>
+ *         </dependency>
+ *
+ *         <!-- log4j binding -->
+ *         <dependency>
+ *             <groupId>org.slf4j</groupId>
+ *             <artifactId>slf4j-log4j12</artifactId>
+ *             <version>1.7.5</version>
+ *         </dependency>
+ *
+ *         <dependency>
+ *             <groupId>org.projectlombok</groupId>
+ *             <artifactId>lombok</artifactId>
+ *             <version>1.18.6</version>
+ *             <scope>provided</scope>
+ *         </dependency>
+ */
 @Slf4j
 public class DownloadZipFileAndRead {
 
